@@ -1,18 +1,21 @@
-# Multifunctional-Robot-Plateform
-Welcome to the Multifunctional Robot Platform repository! This repository hosts the codebase for our versatile robot platform, built around the STM Nucleo F446RE microcontroller. Our platform is designed to facilitate hands-on learning experiences in robotics, programming, and electronics for students and enthusiasts alike.
+# 🤖 Multifunctional Robot Platform
+Welcome to the Multifunctional Robot Platform project! This repository features the codebase for an advanced robot platform based on the STM Nucleo F446RE microcontroller. Designed to enhance hands-on learning in robotics, programming, and electronics, our platform is ideal for students and enthusiasts seeking practical experience.
 
-# Key Features:
+## 🚀 Key Features
 
-Utilizes the STM Nucleo F446RE microcontroller for robust performance and versatility.
-Provides a comprehensive suite of applications, each accompanied by Arduino and Processing code for seamless integration and customization.
-Offers a range of applications covering various aspects of robotics, including locomotion control, sensor interfacing, object avoidance, and more.
-Supports modular design principles, allowing for easy expansion and customization to suit specific educational objectives and project requirements.
+- **STM32 Nucleo F446RE Integration**: Leverages the STM32 Nucleo F446RE microcontroller for exceptional performance and versatility.
+- **Comprehensive Applications**: Includes a diverse suite of applications for various robotic functionalities, such as locomotion control, sensor interfacing, and object avoidance.
+- **Seamless Integration**: Accompanied by Arduino and Processing code for easy integration and customization.
+- **Modular Design**: Facilitates expansion and adaptation to meet specific educational goals and project needs.
 
-# Included Applications:
+## 📚🔧 Robot Testing Scenarios
 
-# Robot Testing Scenarios
+This repository contains the code and documentation for various tests performed on our robot. The tests are categorized into:
 
-This repository contains the code and documentation for various tests performed on our robot. The tests are categorized into locomotion, autonomous navigation, radar functionality, and sensor functionality.
+* **Locomotion** ⚙️
+* **Autonomous Navigation**🧭
+* **Radar Functionality** 📡
+* **Sensor Functionality** 🔍
 
 ## Table of Contents
 - [Locomotion](#locomotion)
@@ -31,54 +34,54 @@ This repository contains the code and documentation for various tests performed 
   - [IMU Sensor Accuracy and LCD Testing](#imu-sensor-accuracy-and-lcd-testing)
   - [Environmental Sensor Testing](#environmental-sensor-testing)
 
-## Locomotion
-
-### Movement Loop Test
-The goal of this testing scenario is to assess the locomotion capabilities of the educational robot platform by executing a predefined movement loop. 
+## ⚙️ Locomotion
+### 🚶‍♂️ Movement Loop Test
+___
+The goal of this [testing scenario](LoopMotion) is to assess the locomotion capabilities of the educational robot platform by executing a predefined movement loop. 
 A square is marked on the floor to establish the starting point where the robot will be positioned at the beginning of the test. It will then perform a series of reverse movements, aiming to return to the square by the test's conclusion. By comparing the robot's initial and final positions, we can evaluate the accuracy of its locomotion.   
 
-### Remote Control via Bluetooth
+### 🎮 Remote Control via Bluetooth
+___
+#### 📱 Components and Configuration
 
-#### Components and Configuration
+The main components involved in this [testing](RemoteControl) are an Arduino Uno with a joystick shield, and the STM microcontroller-based four-wheeled robot, each equipped with an HC-05 Bluetooth module.
 
-The main components involved in this testing are an Arduino Uno with a joystick shield, and the STM microcontroller-based four-wheeled robot, each equipped with an HC-05 Bluetooth module.
-
-1. **Arduino Uno with Joystick Shield**: 
+1. **Arduino Uno with Joystick Shield**
    - The Arduino Uno serves as the primary interface for the joystick shield, which includes multiple buttons and a two-axis joystick. This setup captures the user's physical inputs and converts them into digital outputs.
-   -  ![Joystick Shield](media/joystick.png)
-2. **HC-05 Bluetooth Module (Master)**:
+   <div align="center">
+    <img src="media/joystick.png" alt="Joystick Shield" width="300"/>
+  </div>
+2. **HC-05 Bluetooth Module (Master)**
    - Connected to the Arduino Uno, this module is configured as the master device. Using AT commands, it is set to automatically connect to the slave Bluetooth module and send joystick commands wirelessly to the robot.
 
-3. **HC-05 Bluetooth Module (Slave)**:
+3. **HC-05 Bluetooth Module (Slave)**
    - This module is attached to the robot and receives commands from the Arduino's Bluetooth module. It is configured with AT commands to be the slave module.
 
-4. **STM Microcontroller-Based Robot**:
+4. **STM Microcontroller-Based Robot**
    - The robot is equipped with an STM microcontroller that processes incoming commands for movement and operation, driving the motors accordingly.
 
-#### Interfacing and Connectivity
+#### 🔗 Interfacing and Connectivity
 
-- **Joystick Shield and Arduino Uno**: 
+- **Joystick Shield and Arduino Uno**
   - The joystick shield is directly mounted on the Arduino Uno, interfacing through standard GPIO pins. The Arduino sketch (program) reads the joystick's position and button states, translating these into movement commands.
   - 
-- **Bluetooth Communication**: 
+- **Bluetooth Communication**
   - The two HC-05 modules are paired such that the Arduino Uno acts as the master and the robot as the slave. A serial communication protocol is used between the HC-05 modules and the attached microcontrollers to transmit and receive commands.
 
-#### Testing Process
+#### 📶 Testing Process
 
-1. **Initial Setup**:
+1. **Initial Setup**
    - Both Bluetooth modules were paired, and communication links were established to ensure a stable connection over Bluetooth. The HC-05 modules were tested for range and interference issues in the intended operating environment.
 
-2. **Functionality Testing**:
+2. **Functionality Testing**
    - **Command Transmission**: Each movement command (forward, backward, left, right, lateral, and diagonal movements) was initiated from the joystick and monitored to ensure it was correctly received and processed by the robot.
    - **Movement Execution**: The robot's response to each command was observed to ensure accurate execution of movements. This included verifying the latency, direction, speed, and smoothness of the movements.
 
 
-## Autonomous Navigation
-
-- **Algorithm Description**:
+## 🧭 Autonomous Navigation
 ### Algorithm Description
 
-This algorithm leverages a servo motor equipped with an ultrasonic sensor, a red LED, and a buzzer. Using a switch-case method, each step corresponds to specific actions based on sensor readings and predefined conditions.
+This [algorithm]() leverages a servo motor equipped with an ultrasonic sensor, a red LED, and a buzzer. Using a switch-case method, each step corresponds to specific actions based on sensor readings and predefined conditions.
 
 1. **Forward Movement**
    - The robot moves forward.
@@ -100,25 +103,25 @@ This algorithm leverages a servo motor equipped with an ultrasonic sensor, a red
    - Subsequently, the ultrasonic sensor rotates to 180 degrees to measure the distance on the left side and save it.
    - Comparing the distances, the robot turns towards the side with the greater distance (90 degrees rotation; the time to make a 90° turn was tested and saved).
    - The red LED turns off, and the algorithm returns to Step 1.
+<div align="center">
+    <img src="media/Grafcet.png" alt="Grafcet" width="500"/>
+  </div>
 
-  ![Joystick Shield](media/Grafcet.png)
-
-
-## Radar Functionality Testing
+## 📡 Radar Functionality Testing
 
 ### Test Setup
 
-The radar functionality test is designed to evaluate the effectiveness of the ultrasonic sensor mounted on a servo motor in detecting objects within a specified range and direction (angle). The test environment is set up by positioning the robot stationary with multiple objects dispersed within a 150° arc in front of it. These objects are placed at varying distances to assess the sensor's range and accuracy in a controlled setting.
+The [radar functionality test](Radar_app) is designed to evaluate the effectiveness of the ultrasonic sensor mounted on a servo motor in detecting objects within a specified range and direction (angle). The test environment is set up by positioning the robot stationary with multiple objects dispersed within a 150° arc in front of it. These objects are placed at varying distances to assess the sensor's range and accuracy in a controlled setting.
 
 ### Equipment and Configuration
 
-- **Servo Motor**: 
+- **Servo Motor**
   - A servo motor is utilized to provide precise control over the angular position of the ultrasonic sensor. The servo is programmed to sweep from 15° to 165° with a 2° step.
   
-- **Ultrasonic Sensor**: 
+- **Ultrasonic Sensor**
   - Mounted on the servo motor, the ultrasonic sensor measures the distance to objects at every direction (every 2° sweep) given by the servo motor.
 
-- **Processing Software**: 
+- **Processing Software**
   - For every step of the servo motor, the microcontroller captures the distance using the ultrasonic sensor and sends the data in real-time to the processing computer through the UART interface. The STM microcontroller is connected to a computer with a USB cable. The computer runs a Java code on the Processing software, interpreting the data and rendering a visual representation of the robot's surroundings based on the detected distances and angles received.
 
 ### Procedure
@@ -132,12 +135,11 @@ The radar functionality test is designed to evaluate the effectiveness of the ul
 7. Sweep back from the 180° direction to the 0° direction, performing the same transmission and so on.
 
 
-## Sensor Functionality and Display Testing
+## 🔍 Sensor Functionality and Display Testing
 
 ### Encoder and LCD Display Testing
-### Encoder and LCD Functionality Testing
-
-In this testing scenario, we evaluate the functionality of the encoders and LCD integrated into the educational robot platform.
+___
+In this [testing scenario](Encoders), we evaluate the functionality of the encoders and LCD integrated into the educational robot platform.
 
 #### Objectives
 The objective is to assess the accuracy of distance measurement using encoders and to verify the functionality of the LCD in presenting encoder data.
@@ -153,18 +155,20 @@ Where:
 - \( D \): The Diameter of the nonholonomic wheel.
 
 #### Test Procedure
-1. **Encoder Testing**: 
+1. **Encoder Testing**
    - The robot is initially tested to evaluate the accuracy of distance measurement using encoders alone. It moves forward, and the distance covered is calculated based on the encoder readings.
 
-2. **Encoder and LCD Display Testing**: 
+2. **Encoder and LCD Display Testing**
    - Subsequently, the robot undergoes testing with the LCD enabled, which refreshes every program loop for instantaneous real-time visualization. It follows the same forward movement procedure while simultaneously displaying the encoder counts on the LCD screen.
 
 ### IMU Sensor Accuracy and LCD Testing
-The primary objective of this test is to evaluate the accuracy and responsiveness of the Inertial Measurement Unit (IMU) sensor integrated into the educational robot. This involves monitoring the sensor's ability to accurately measure angular velocity, acceleration, and orientation of the robot, and using the data sent from the STM Serial to visualize it with Processing in Real-time.
+___
+The primary objective of this [test](MPU_TiltTracking) is to evaluate the accuracy and responsiveness of the Inertial Measurement Unit (IMU) sensor integrated into the educational robot. This involves monitoring the sensor's ability to accurately measure angular velocity, acceleration, and orientation of the robot, and using the data sent from the STM Serial to visualize it with Processing in Real-time.
 
 
-### Environmental Sensor Testing
-In this testing, we are going to test the environmental sensor accuracy on the educational robot, using the DHT22 sensor for measuring temperature and humidity. The test aims to assess the sensor's responsiveness and accuracy in real-time, with data outputs displayed on an LCD screen integrated into the robot.
+### Environmental Sensor Testing*
+___
+In this [testing](TempHumi_Tracking), we are going to test the environmental sensor accuracy on the educational robot, using the DHT22 sensor for measuring temperature and humidity. The test aims to assess the sensor's responsiveness and accuracy in real-time, with data outputs displayed on an LCD screen integrated into the robot.
 
 
 ## How to Run the Tests
