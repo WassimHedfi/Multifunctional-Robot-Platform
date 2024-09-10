@@ -1,0 +1,3 @@
+# Ultrasonic Sensor-Guided Maze Navigation for Collision Avoidance
+
+The .ino code showcases a basic implementation of an autonomous robot navigation system, utilizing an ultrasonic sensor and a servo motor to detect obstacles and navigate through a maze. The ultrasonic sensor scans the environment, guided by the servo motor, to help the robot find a clear path while avoiding collisions. A simple decision-making algorithm, structured using a switch-case control flow, is employed to handle real-time navigation and obstacle avoidance. This project demonstrates foundational concepts in robotic pathfinding and control systems.
