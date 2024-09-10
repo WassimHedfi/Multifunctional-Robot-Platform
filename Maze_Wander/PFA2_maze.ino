@@ -63,7 +63,8 @@ void setup() {
   pinMode(ENABLE_4_PIN, OUTPUT);  // OUTPUT
 
 
-  Serial.begin(9600);
+  // Serial Monitor Baud Rate setup
+ // Serial.begin(9600);
 
   // Ultrason
   pinMode(trigPin, OUTPUT);
@@ -78,9 +79,10 @@ void setup() {
 
   // Servo
   servo.attach(PA0);  // attaches the servo on pin 9 to the servo objectư
-  servo.write(90);
-  stop();
-  delay(10000);
+  servo.write(90); // Start with Servo motor directed up front
+  stop(); // This is not necessary
+  delay(10000); // This serves as an initial delay after setup to prevent the robot from starting immediately,
+                // allowing time for any necessary adjustments before it begins navigating.
 }
 
 void forward(uint8_t speed) {
@@ -257,28 +259,8 @@ void stop() {
 
 
 
-
-
-
-/*
- * Created by ArduinoGetStarted, https://arduinogetstarted.com
- *
- * Arduino - Ultrasonic Sensor HC-SR04
- *
- * Wiring: Ultrasonic Sensor -> Arduino:
- * - VCC  -> 5VDC
- * - TRIG -> Pin 9
- * - ECHO -> Pin 8
- * - GND  -> GND
- *
- * Tutorial is available here: https://arduinogetstarted.com/tutorials/arduino-ultrasonic-sensor
- */
-
-
-
 void loop() {
-  // begin serial port
-
+  
   switch (travel) {
     case 1:
       get_distance();
@@ -411,7 +393,14 @@ void get_distance() {
   // calculate the distance
   distance_cm = 0.017 * duration_us;
 
+
+
+   // Uncomment the next three lines to test Ultrasonic sensor with Arduino Serial monitor
+  // Also uncomment Serial.begin() in the Setup section and set the appropriate Baud Rate
+
+  
   // print the value to Serial Monitor
+
   Serial.print("distance: ");
   Serial.print(distance_cm);
   Serial.println(" cm");
